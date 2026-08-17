@@ -3,178 +3,373 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Curs de Drons, Node-RED i IA</title>
+  <title>Digitalització i Drons a la Vinya | Curs Gandesa</title>
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
     :root {
-      --primary: #2563eb;
-      --bg: #f8fafc;
-      --card-bg: #ffffff;
-      --text: #1e293b;
+      --primary: #10b981; /* Verd vinya / tecnològic */
+      --primary-dark: #047857;
+      --accent: #3b82f6; /* Blau dron */
+      --bg-dark: #0f172a;
+      --card-bg: #1e293b;
+      --text-light: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      font-family: system-ui, -apple-system, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
       display: flex;
-      height: 100vh;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    /* Menú lateral / Explorador */
-    nav {
-      width: 280px;
-      background-color: var(--card-bg);
-      border-right: 1px solid #e2e8f0;
-      padding: 1.5rem;
-      box-sizing: border-box;
+    /* MENÚ LATERAL / EXPLORADOR */
+    aside {
+      width: 300px;
+      background: rgba(30, 41, 59, 0.85);
+      backdrop-filter: blur(12px);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      z-index: 10;
     }
 
-    nav h2 {
-      font-size: 1.1rem;
-      margin-top: 0;
+    .brand {
+      padding: 1.8rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand i {
+      font-size: 1.8rem;
       color: var(--primary);
     }
 
-    nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    .brand h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
     }
 
-    nav li {
+    .menu {
+      list-style: none;
+      padding: 1.25rem 1rem;
+    }
+
+    .menu-item {
       margin-bottom: 0.5rem;
     }
 
-    nav a {
-      display: block;
-      padding: 0.75rem 1rem;
-      color: var(--text);
+    .menu-link {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.85rem 1rem;
+      color: var(--text-muted);
       text-decoration: none;
-      border-radius: 0.375rem;
-      transition: background 0.2s;
+      border-radius: 0.5rem;
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: all 0.25s ease;
     }
 
-    nav a:hover, nav a.active {
-      background-color: #eff6ff;
-      color: var(--primary);
-      font-weight: 600;
+    .menu-link:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-light);
     }
 
-    /* Àrea de contingut */
+    .menu-link.active {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+
+    .menu-link i {
+      font-size: 1.1rem;
+      width: 20px;
+      text-align: center;
+    }
+
+    /* ÀREA PRINCIPAL DE CONTINGUT */
     main {
       flex: 1;
-      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
       overflow-y: auto;
     }
 
+    /* BANNER SUPERIOR AMB IMATGE DE VINYES I DRONS */
+    .hero-banner {
+      height: 220px;
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.3), var(--bg-dark)),
+                  url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1600&auto=format&fit=crop') center/cover;
+      display: flex;
+      align-items: flex-end;
+      padding: 2rem 3rem;
+      position: relative;
+    }
+
+    .hero-content h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .hero-content p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    /* CONTENIDOR DE SECCIONS */
+    .content-container {
+      padding: 2rem 3rem 4rem;
+    }
+
     .section-page {
-      display: none; /* Amagat per defecte */
-      background: var(--card-bg);
-      padding: 2rem;
-      border-radius: 0.5rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      display: none;
+      animation: fadeIn 0.4s ease forwards;
     }
 
     .section-page.active {
-      display: block; /* S'activa en fer clic */
+      display: block;
     }
 
-    .video-card {
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
       margin-top: 1.5rem;
-      padding: 1rem;
-      border: 1px solid #e2e8f0;
-      border-radius: 0.375rem;
-      background-color: #f1f5f9;
     }
 
-    .btn-video {
-      display: inline-block;
-      margin-top: 0.5rem;
-      padding: 0.5rem 1rem;
-      background-color: var(--primary);
-      color: white;
-      text-decoration: none;
-      border-radius: 0.25rem;
+    /* CARDS ESTIL DASHBOARD */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 0.85rem;
+      padding: 1.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary);
+    }
+
+    .card p {
+      color: var(--text-muted);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    /* REPRODUCTOR DE VÍDEO EMBEDDED */
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      margin-top: 1rem;
+      border: 1px solid var(--border);
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 900px) {
+      body { flex-direction: column; }
+      aside { width: 100%; height: auto; }
+      main { height: auto; }
+      .grid-2 { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
   <!-- EXPLORADOR / MENÚ LATERAL -->
-  <nav>
-    <h2>Mòduls del Curs</h2>
-    <ul>
-      <li><a href="#intro" class="nav-link active" onclick="showSection('intro', this)">0. Introducció a Node-RED</a></li>
-      <li><a href="#tello" class="nav-link" onclick="showSection('tello', this)">1. Control dron Tello</a></li>
-      <li><a href="#vision" class="nav-link" onclick="showSection('vision', this)">2. Computer Vision i IA</a></li>
-      <li><a href="#digitalitzacio" class="nav-link" onclick="showSection('digitalitzacio', this)">3. Activitatd de digitalització amb drons</a></li>
+  <aside>
+    <div class="brand">
+      <i class="fa-solid fa-drone"></i>
+      <h2>AgroBotik | Gandesa</h2>
+    </div>
+    <ul class="menu">
+      <li class="menu-item">
+        <a href="#intro" class="menu-link active" onclick="showSection('intro', this)">
+          <i class="fa-solid fa-diagram-project"></i> 0. Node-RED Intro
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="#tello" class="menu-link" onclick="showSection('tello', this)">
+          <i class="fa-solid fa-plane-drone"></i> 1. Control Dron Tello
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="#vision" class="menu-link" onclick="showSection('vision', this)">
+          <i class="fa-solid fa-eye"></i> 2. Computer Vision & IA
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="#digitalitzacio" class="menu-link" onclick="showSection('digitalitzacio', this)">
+          <i class="fa-solid fa-wine-glass-stripe"></i> 3. Drons & Vinyes
+        </a>
+      </li>
     </ul>
-  </nav>
+  </aside>
 
-  <!-- CONTINGUT DE LES PÀGINES -->
+  <!-- SECCIÓ PRINCIPAL -->
   <main>
-    <!-- Secció 0 -->
-    <div id="intro" class="section-page active">
-      <h1>0. Introducció a Node-RED</h1>
-      <p>Benvinguts al mòdul d'introducció. Aquí aprendrem els conceptes bàsics de programació per nodes.</p>
-      <div class="video-card">
-        <h3>Vídeo Explicatiu</h3>
-        <p>Aprende a instal·lar i configurar Node-RED des de zero.</p>
-        <a href="https://www.youtube.com/" target="_blank" class="btn-video">Veure vídeo a YouTube ➔</a>
+    <!-- HERO BANNER -->
+    <div class="hero-banner">
+      <div class="hero-content">
+        <h1 id="page-title">0. Introducció a Node-RED</h1>
+        <p>Automatització, robòtica i digitalització agrícola a la Terra Alta.</p>
       </div>
     </div>
 
-    <!-- Secció 1 -->
-    <div id="tello" class="section-page">
-      <h1>1. Control del dron Tello amb Node-RED</h1>
-      <p>Configuració dels nodes UDP/IP per enviar comandes SDK al dron Tello.</p>
-      <div class="video-card">
-        <h3>Vídeo Explicatiu</h3>
-        <p>Comanda d'enlairament, aterratge i telemetria en temps real.</p>
-        <a href="https://www.youtube.com/" target="_blank" class="btn-video">Veure vídeo a YouTube ➔</a>
-      </div>
-    </div>
+    <!-- CONTINGUT DE LES PÀGINES -->
+    <div class="content-container">
 
-    <!-- Secció 2 -->
-    <div id="vision" class="section-page">
-      <h1>2. Computer Vision i IA</h1>
-      <p>Processament de la càmera del dron mitjançant OpenCV, TensorFlow o model de visió artificial.</p>
-      <div class="video-card">
-        <h3>Vídeo Explicatiu</h3>
-        <p>Detecció de rostres i seguiment d'objectes amb el dron.</p>
-        <a href="https://www.youtube.com/" target="_blank" class="btn-video">Veure vídeo a YouTube ➔</a>
+      <!-- MÒDUL 0 -->
+      <div id="intro" class="section-page active">
+        <div class="grid-2">
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop" alt="Node-RED" class="card-img">
+            <h3><i class="fa-solid fa-gears"></i> Què és Node-RED?</h3>
+            <p>Node-RED és una eina de programació visual basada en fluxos d'esdeveniments. S'utilitza per connectar dispositius de hardware, APIs i serveis en línia en l'àmbit de l'IoT i l'automàtica.</p>
+          </div>
+          <div class="card">
+            <h3><i class="fa-brands fa-youtube"></i> Vídeo Tutorial del Mòdul</h3>
+            <p>Aprèn a instal·lar l'entorn de desenvolupament i crear els teus primers fluxos de dades.</p>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/f55qeKGgB_M" title="Node-RED Intro" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <!-- Secció 3 -->
-    <div id="digitalitzacio" class="section-page">
-      <h1>3. Activitats de digitalització amb drons</h1>
-      <p>Casos d'ús reals, recollida de dades, fotogrametria i integració en entorns industrials.</p>
-      <div class="video-card">
-        <h3>Vídeo Explicatiu</h3>
-        <p>Captura de dades i digitalització de processos amb drons.</p>
-        <a href="https://www.youtube.com/" target="_blank" class="btn-video">Veure vídeo a YouTube ➔</a>
+      <!-- MÒDUL 1 -->
+      <div id="tello" class="section-page">
+        <div class="grid-2">
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1527977966376-1c8408f9f108?q=80&w=800&auto=format&fit=crop" alt="Dron Tello" class="card-img">
+            <h3><i class="fa-solid fa-gamepad"></i> Control UDP de Dron</h3>
+            <p>Connecta Node-RED directament amb el dron DJI Tello mitjançant paquets UDP. Envia comandes de desplaçament, enlairament i rep la telemetria en temps real a la teva pantalla.</p>
+          </div>
+          <div class="card">
+            <h3><i class="fa-brands fa-youtube"></i> Control del Tello en acció</h3>
+            <p>Sessió pràctica de vol autònom utilitzant nodes personalitzats.</p>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/5U2cgO0zQms" title="Tello NodeRED" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- MÒDUL 2 -->
+      <div id="vision" class="section-page">
+        <div class="grid-2">
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1507146426996-ef05306b995a?q=80&w=800&auto=format&fit=crop" alt="Computer Vision" class="card-img">
+            <h3><i class="fa-solid fa-brain"></i> Detecció amb IA</h3>
+            <p>Captura el vídeo de la càmera del dron i processa-ho amb OpenCV i TensorFlow. Reconeixement d'elements, seguiment de línies de cultiu i detecció de patrons.</p>
+          </div>
+          <div class="card">
+            <h3><i class="fa-brands fa-youtube"></i> Processament d'imatge en temps real</h3>
+            <p>Integració dels algorismes de visió artificial amb la resposta del dron.</p>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Computer Vision" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MÒDUL 3 -->
+      <div id="digitalitzacio" class="section-page">
+        <div class="grid-2">
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?q=80&w=800&auto=format&fit=crop" alt="Vinya i Agricultura de Precisió" class="card-img">
+            <h3><i class="fa-solid fa-seedling"></i> Agricultura de Precisió</h3>
+            <p>Captura d'imatges aèries de vinyes per analitzar l'estat de la vegetació, detectar estrès hídric i optimitzar el tractament dels cultius a la comarca de la Terra Alta.</p>
+          </div>
+          <div class="card">
+            <h3><i class="fa-brands fa-youtube"></i> Aplicació real en vinya</h3>
+            <p>Cas d'estudi de digitalització i fotogrametria aplicada al camp.</p>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Agricultura de precisio" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </main>
 
-  <!-- LÒGICA PER CANVIAR DE PÀGINA -->
+  <!-- LÒGICA D'INTERACCIÓ -->
   <script>
+    const titles = {
+      'intro': '0. Introducció a Node-RED',
+      'tello': '1. Control del Dron Tello amb Node-RED',
+      'vision': '2. Computer Vision i Intel·ligència Artificial',
+      'digitalitzacio': '3. Digitalització Agrícola i Drons a la Vinya'
+    };
+
     function showSection(sectionId, element) {
       // Amaga totes les seccions
       document.querySelectorAll('.section-page').forEach(sec => {
         sec.classList.remove('active');
       });
 
-      // Treu la classe activa de tots els enllaços del menú
-      document.querySelectorAll('.nav-link').forEach(link => {
+      // Desactiva el menú
+      document.querySelectorAll('.menu-link').forEach(link => {
         link.classList.remove('active');
       });
 
-      // Mostra la secció seleccionada i activa l'enllaç
+      // Activa la nova secció i opció de menú
       document.getElementById(sectionId).classList.add('active');
       element.classList.add('active');
+
+      // Canvia el títol del banner
+      document.getElementById('page-title').innerText = titles[sectionId];
     }
   </script>
 
