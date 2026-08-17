@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curs de Drons, Node-RED i IA</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      display: flex;
+      height: 100vh;
+    }
+
+    /* Menú lateral / Explorador */
+    nav {
+      width: 280px;
+      background-color: var(--card-bg);
+      border-right: 1px solid #e2e8f0;
+      padding: 1.5rem;
+      box-sizing: border-box;
+    }
+
+    nav h2 {
+      font-size: 1.1rem;
+      margin-top: 0;
+      color: var(--primary);
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav li {
+      margin-bottom: 0.5rem;
+    }
+
+    nav a {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: var(--text);
+      text-decoration: none;
+      border-radius: 0.375rem;
+      transition: background 0.2s;
+    }
+
+    nav a:hover, nav a.active {
+      background-color: #eff6ff;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* Àrea de contingut */
+    main {
+      flex: 1;
+      padding: 2.5rem;
+      overflow-y: auto;
+    }
+
+    .section-page {
+      display: none; /* Amagat per defecte */
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .section-page.active {
+      display: block; /* S'activa en fer clic */
+    }
+
+    .video-card {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.375rem;
+      background-color: #f1f5f9;
+    }
+
+    .btn-video {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- EXPLORADOR / MENÚ LATERAL -->
+  <nav>
+    <h2>Mòduls del Curs</h2>
+    <ul>
+      <li><a href="#intro" class="nav-link active" onclick="showSection('intro', this)">0. Introducció a Node-RED</a></li>
+      <li><a href="#tello" class="nav-link" onclick="showSection('tello', this)">1. Control dron Tello</a></li>
+      <li><a href="#vision" class="nav-link" onclick="showSection('vision', this)">2. Computer Vision i IA</a></li>
+      <li><a href="#digitalitzacio" class="nav-link" onclick="showSection('digitalitzacio', this)">3. Digitalització amb drons</a></li>
+    </ul>
+  </nav>
+
+  <!-- CONTINGUT DE LES PÀGINES -->
+  <main>
+    <!-- Secció 0 -->
+    <div id="intro" class="section-page active">
+      <h1>0. Introducció a Node-RED</h1>
+      <p>Benvinguts al mòdul d'introducció. Aquí aprendrem els conceptes bàsics de programació per nodes.</p>
+      <div class="video-card">
+        <h3>Vídeo Explicatiu</h3>
+        <p>Aprende a instal·lar i configurar Node-RED des de zero.</p>
+        <a href="https://www.youtube.com/" target="_blank" class="btn-video">Veure vídeo a YouTube ➔</a>
+      </div>
+    </div>
+
+    <!-- Secció 1 -->
+    <div id="tello" class="section-page">
+      <h1>1. Control del dron Tello amb Node-RED</h1>
+      <p>Configuració dels nodes UDP/IP per enviar comandes SDK al dron Tello.</p>
+      <div class="video-card">
+        <h3>Vídeo Explicatiu</h3>
+        <p>Comanda d'enlairament, aterratge i telemetria en temps real.</p>
+        <a href="https://www.youtube.com/" target="_blank" class="btn-video">Veure vídeo a YouTube ➔</a>
+      </div>
+    </div>
+
+    <!-- Secció 2 -->
+    <div id="vision" class="section-page">
+      <h1>2. Computer Vision i IA</h1>
+      <p>Processament de la càmera del dron mitjançant OpenCV, TensorFlow o model de visió artificial.</p>
+      <div class="video-card">
+        <h3>Vídeo Explicatiu</h3>
+        <p>Detecció de rostres i seguiment d'objectes amb el dron.</p>
+        <a href="https://www.youtube.com/" target="_blank" class="btn-video">Veure vídeo a YouTube ➔</a>
+      </div>
+    </div>
+
+    <!-- Secció 3 -->
+    <div id="digitalitzacio" class="section-page">
+      <h1>3. Activitats de digitalització amb drons</h1>
+      <p>Casos d'ús reals, recollida de dades, fotogrametria i integració en entorns industrials.</p>
+      <div class="video-card">
+        <h3>Vídeo Explicatiu</h3>
+        <p>Captura de dades i digitalització de processos amb drons.</p>
+        <a href="https://www.youtube.com/" target="_blank" class="btn-video">Veure vídeo a YouTube ➔</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- LÒGICA PER CANVIAR DE PÀGINA -->
+  <script>
+    function showSection(sectionId, element) {
+      // Amaga totes les seccions
+      document.querySelectorAll('.section-page').forEach(sec => {
+        sec.classList.remove('active');
+      });
+
+      // Treu la classe activa de tots els enllaços del menú
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+      });
+
+      // Mostra la secció seleccionada i activa l'enllaç
+      document.getElementById(sectionId).classList.add('active');
+      element.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
