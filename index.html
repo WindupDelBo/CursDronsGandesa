@@ -170,6 +170,9 @@
       border-radius: 0.85rem;
       padding: 1.5rem;
       box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .card h3 {
@@ -185,6 +188,7 @@
       color: var(--text-muted);
       line-height: 1.6;
       font-size: 0.95rem;
+      margin-bottom: 1rem;
     }
 
     .card-img {
@@ -193,6 +197,31 @@
       object-fit: cover;
       border-radius: 0.5rem;
       margin-bottom: 1rem;
+    }
+
+    /* BOTÓ DE DESCÀRREGA DE DRIVE */
+    .btn-drive {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background-color: rgba(59, 130, 246, 0.15);
+      color: #60a5fa;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      padding: 0.75rem 1.25rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      margin-top: auto;
+    }
+
+    .btn-drive:hover {
+      background-color: var(--accent);
+      color: white;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+      transform: translateY(-2px);
     }
 
     /* REPRODUCTOR DE VÍDEO EMBEDDED */
@@ -273,15 +302,22 @@
       <div id="intro" class="section-page active">
         <div class="grid-2">
           <div class="card">
-            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop" alt="Node-RED" class="card-img">
-            <h3><i class="fa-solid fa-gears"></i> Què és Node-RED?</h3>
-            <p>Node-RED és una eina de programació visual basada en fluxos d'esdeveniments. S'utilitza per connectar dispositius de hardware, APIs i serveis en línia en l'àmbit de l'IoT i l'automàtica.</p>
+            <div>
+              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop" alt="Node-RED" class="card-img">
+              <h3><i class="fa-solid fa-gears"></i> Què és Node-RED?</h3>
+              <p>Node-RED és una eina de programació visual basada en fluxos d'esdeveniments. S'utilitza per connectar dispositius de hardware, APIs i serveis en línia en l'àmbit de l'IoT i l'automàtica.</p>
+            </div>
+            <a href="https://drive.google.com/drive/folders/1AYEajvPAkMdDem7RYl-05DuClLTpExP1?usp=sharing" target="_blank" class="btn-drive">
+              <i class="fa-brands fa-google-drive"></i> Descarregar Recursos (Drive)
+            </a>
           </div>
           <div class="card">
-            <h3><i class="fa-brands fa-youtube"></i> Vídeo Tutorial del Mòdul</h3>
-            <p>Aprèn a instal·lar l'entorn de desenvolupament i crear els teus primers fluxos de dades.</p>
-            <div class="video-wrapper">
-              <iframe src="https://www.youtube.com/embed/f55qeKGgB_M" title="Node-RED Intro" allowfullscreen></iframe>
+            <div>
+              <h3><i class="fa-brands fa-youtube"></i> Vídeo Tutorial del Mòdul</h3>
+              <p>Aprèn a instal·lar l'entorn de desenvolupament i crear els teus primers fluxos de dades.</p>
+              <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/f55qeKGgB_M" title="Node-RED Intro" allowfullscreen></iframe>
+              </div>
             </div>
           </div>
         </div>
@@ -291,15 +327,22 @@
       <div id="tello" class="section-page">
         <div class="grid-2">
           <div class="card">
-            <img src="https://images.unsplash.com/photo-1527977966376-1c8408f9f108?q=80&w=800&auto=format&fit=crop" alt="Dron Tello" class="card-img">
-            <h3><i class="fa-solid fa-gamepad"></i> Control UDP de Dron</h3>
-            <p>Connecta Node-RED directament amb el dron DJI Tello mitjançant paquets UDP. Envia comandes de desplaçament, enlairament i rep la telemetria en temps real a la teva pantalla.</p>
+            <div>
+              <img src="https://images.unsplash.com/photo-1527977966376-1c8408f9f108?q=80&w=800&auto=format&fit=crop" alt="Dron Tello" class="card-img">
+              <h3><i class="fa-solid fa-gamepad"></i> Control UDP de Dron</h3>
+              <p>Connecta Node-RED directament amb el dron DJI Tello mitjançant paquets UDP. Envia comandes de desplaçament, enlairament i rep la telemetria en temps real a la teva pantalla.</p>
+            </div>
+            <a href="https://drive.google.com/drive/folders/1AYEajvPAkMdDem7RYl-05DuClLTpExP1?usp=sharing" target="_blank" class="btn-drive">
+              <i class="fa-brands fa-google-drive"></i> Descarregar Recursos (Drive)
+            </a>
           </div>
           <div class="card">
-            <h3><i class="fa-brands fa-youtube"></i> Control del Tello en acció</h3>
-            <p>Sessió pràctica de vol autònom utilitzant nodes personalitzats.</p>
-            <div class="video-wrapper">
-              <iframe src="https://www.youtube.com/embed/5U2cgO0zQms" title="Tello NodeRED" allowfullscreen></iframe>
+            <div>
+              <h3><i class="fa-brands fa-youtube"></i> Control del Tello en acció</h3>
+              <p>Sessió pràctica de vol autònom utilitzant nodes personalitzats.</p>
+              <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/5U2cgO0zQms" title="Tello NodeRED" allowfullscreen></iframe>
+              </div>
             </div>
           </div>
         </div>
@@ -309,15 +352,22 @@
       <div id="vision" class="section-page">
         <div class="grid-2">
           <div class="card">
-            <img src="https://images.unsplash.com/photo-1507146426996-ef05306b995a?q=80&w=800&auto=format&fit=crop" alt="Computer Vision" class="card-img">
-            <h3><i class="fa-solid fa-brain"></i> Detecció amb IA</h3>
-            <p>Captura el vídeo de la càmera del dron i processa-ho amb OpenCV i TensorFlow. Reconeixement d'elements, seguiment de línies de cultiu i detecció de patrons.</p>
+            <div>
+              <img src="https://images.unsplash.com/photo-1507146426996-ef05306b995a?q=80&w=800&auto=format&fit=crop" alt="Computer Vision" class="card-img">
+              <h3><i class="fa-solid fa-brain"></i> Detecció amb IA</h3>
+              <p>Captura el vídeo de la càmera del dron i processa-ho amb OpenCV i TensorFlow. Reconeixement d'elements, seguiment de línies de cultiu i detecció de patrons.</p>
+            </div>
+            <a href="https://drive.google.com/drive/folders/1AYEajvPAkMdDem7RYl-05DuClLTpExP1?usp=sharing" target="_blank" class="btn-drive">
+              <i class="fa-brands fa-google-drive"></i> Descarregar Recursos (Drive)
+            </a>
           </div>
           <div class="card">
-            <h3><i class="fa-brands fa-youtube"></i> Processament d'imatge en temps real</h3>
-            <p>Integració dels algorismes de visió artificial amb la resposta del dron.</p>
-            <div class="video-wrapper">
-              <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Computer Vision" allowfullscreen></iframe>
+            <div>
+              <h3><i class="fa-brands fa-youtube"></i> Processament d'imatge en temps real</h3>
+              <p>Integració dels algorismes de visió artificial amb la resposta del dron.</p>
+              <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Computer Vision" allowfullscreen></iframe>
+              </div>
             </div>
           </div>
         </div>
@@ -327,15 +377,22 @@
       <div id="digitalitzacio" class="section-page">
         <div class="grid-2">
           <div class="card">
-            <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?q=80&w=800&auto=format&fit=crop" alt="Vinya i Agricultura de Precisió" class="card-img">
-            <h3><i class="fa-solid fa-seedling"></i> Agricultura de Precisió</h3>
-            <p>Captura d'imatges aèries de vinyes per analitzar l'estat de la vegetació, detectar estrès hídric i optimitzar el tractament dels cultius a la comarca de la Terra Alta.</p>
+            <div>
+              <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?q=80&w=800&auto=format&fit=crop" alt="Vinya i Agricultura de Precisió" class="card-img">
+              <h3><i class="fa-solid fa-seedling"></i> Agricultura de Precisió</h3>
+              <p>Captura d'imatges aèries de vinyes per analitzar l'estat de la vegetació, detectar estrès hídric i optimitzar el tractament dels cultius a la comarca de la Terra Alta.</p>
+            </div>
+            <a href="https://drive.google.com/drive/folders/1AYEajvPAkMdDem7RYl-05DuClLTpExP1?usp=sharing" target="_blank" class="btn-drive">
+              <i class="fa-brands fa-google-drive"></i> Descarregar Recursos (Drive)
+            </a>
           </div>
           <div class="card">
-            <h3><i class="fa-brands fa-youtube"></i> Aplicació real en vinya</h3>
-            <p>Cas d'estudi de digitalització i fotogrametria aplicada al camp.</p>
-            <div class="video-wrapper">
-              <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Agricultura de precisio" allowfullscreen></iframe>
+            <div>
+              <h3><i class="fa-brands fa-youtube"></i> Aplicació real en vinya</h3>
+              <p>Cas d'estudi de digitalització i fotogrametria aplicada al camp.</p>
+              <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Agricultura de precisio" allowfullscreen></iframe>
+              </div>
             </div>
           </div>
         </div>
