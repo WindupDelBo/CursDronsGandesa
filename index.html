@@ -108,7 +108,7 @@
       text-align: center;
     }
 
-    /* SECCIÓ LLICÈNCIA CREATIVE COMMONS (MOLT VISIBLE I A BAIX) */
+    /* SECCIÓ LLICÈNCIA CREATIVE COMMONS */
     .sidebar-footer {
       margin-top: auto;
       padding: 1.25rem 1rem;
@@ -165,6 +165,22 @@
     }
 
     .cc-text a:hover {
+      text-decoration: underline;
+    }
+
+    .cc-contact {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+      word-break: break-all;
+    }
+
+    .cc-contact a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .cc-contact a:hover {
       text-decoration: underline;
     }
 
@@ -380,16 +396,20 @@
     <!-- LLICÈNCIA CREATIVE COMMONS INTEGRADa AL PEU DE LA BARRA LATERAL -->
     <div class="sidebar-footer">
       <div class="cc-card">
-        <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="cc-badge" title="Llicència Creative Commons BY-NC 4.0">
-          <img alt="Llicència Creative Commons CC BY-NC 4.0" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc.png" />
+        <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" class="cc-badge" title="Llicència Creative Commons BY-NC-SA 4.0">
+          <img alt="Llicència Creative Commons CC BY-NC-SA 4.0" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.png" />
         </a>
         <div class="cc-title">Llicència de l'obra</div>
         <p class="cc-text">
-          Aquest contingut està sota la llicència <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>.
+          Aquest contingut està sota la llicència <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>.
+        </p>
+        <p class="cc-contact">
+          <i class="fa-solid fa-envelope"></i> Contacte: <a href="mailto:ajime118@xtec.cat">ajime118@xtec.cat</a>
         </p>
         <ul class="cc-rules">
           <li><i class="fa-solid fa-user-check"></i> Cal citar l'autoria</li>
           <li><i class="fa-solid fa-hand-holding-dollar"></i> Ús No Comercial</li>
+          <li><i class="fa-solid fa-rotate"></i> Compartir Igual</li>
         </ul>
       </div>
     </div>
@@ -590,6 +610,7 @@
             </div>
           </div>
         </div>
+
         <!-- SECCIÓ D'ACTIVITATS DEL MÒDUL 2 -->
         <div class="activities-section" style="margin-top: 40px; padding-top: 30px; border-top: 2px dashed #e0e0e0;">
           
@@ -726,6 +747,7 @@
             </div>
           </div>
         </div>
+
         <!-- SECCIÓ D'ACTIVITATS DEL MÒDUL 3 -->
         <div class="activities-section" style="margin-top: 40px; padding-top: 30px; border-top: 2px dashed #e0e0e0;">
           
