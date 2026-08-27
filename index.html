@@ -31,24 +31,26 @@
       background-color: var(--bg-dark);
       color: var(--text-light);
       display: flex;
-      min-height: 100vh;
-      overflow-x: hidden;
+      height: 100vh;
+      overflow: hidden;
     }
 
     /* MENÚ LATERAL / EXPLORADOR */
     aside {
-      width: 300px;
-      background: rgba(30, 41, 59, 0.85);
+      width: 320px;
+      background: rgba(30, 41, 59, 0.95);
       backdrop-filter: blur(12px);
       border-right: 1px solid var(--border);
       display: flex;
       flex-direction: column;
       flex-shrink: 0;
+      height: 100vh;
+      overflow-y: auto;
       z-index: 10;
     }
 
     .brand {
-      padding: 1.8rem 1.5rem;
+      padding: 1.5rem 1.25rem;
       border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
@@ -69,6 +71,7 @@
     .menu {
       list-style: none;
       padding: 1.25rem 1rem;
+      flex: 1 0 auto;
     }
 
     .menu-item {
@@ -105,31 +108,32 @@
       text-align: center;
     }
 
-    /* SECCIÓ LLICÈNCIA CREATIVE COMMONS (MOLT VISIBLE) */
+    /* SECCIÓ LLICÈNCIA CREATIVE COMMONS (MOLT VISIBLE I A BAIX) */
     .sidebar-footer {
       margin-top: auto;
-      padding: 1.25rem;
+      padding: 1.25rem 1rem;
       border-top: 2px solid var(--primary);
-      background: rgba(15, 23, 42, 0.75);
-      text-align: center;
+      background: rgba(15, 23, 42, 0.9);
+      flex-shrink: 0;
     }
 
     .cc-card {
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--border);
       border-radius: 0.6rem;
       padding: 1rem 0.75rem;
+      text-align: center;
     }
 
     .cc-badge {
       display: inline-block;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.6rem;
       transition: transform 0.2s ease;
     }
 
     .cc-badge img {
-      height: 34px;
-      width: auto;
+      height: 31px;
+      width: 88px;
       display: block;
       margin: 0 auto;
     }
@@ -151,7 +155,7 @@
       font-size: 0.78rem;
       color: var(--text-muted);
       line-height: 1.35;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.6rem;
     }
 
     .cc-text a {
@@ -167,7 +171,7 @@
     .cc-rules {
       list-style: none;
       text-align: left;
-      background: rgba(0, 0, 0, 0.25);
+      background: rgba(0, 0, 0, 0.3);
       padding: 0.6rem 0.75rem;
       border-radius: 0.4rem;
       font-size: 0.75rem;
@@ -332,7 +336,7 @@
 
     /* RESPONSIVE DESIGN */
     @media (max-width: 900px) {
-      body { flex-direction: column; }
+      body { flex-direction: column; height: auto; overflow: auto; }
       aside { width: 100%; height: auto; }
       main { height: auto; }
       .grid-2 { grid-template-columns: 1fr; }
@@ -347,6 +351,7 @@
       <i class="fa-solid fa-drone"></i>
       <div>
         <h2>Curs digitalització amb drons</h2>
+        <h6 style="color: var(--text-muted); font-weight: 400;">anjial.edu@gmail.com</h6>
       </div>
     </div>
 
@@ -373,15 +378,15 @@
       </li>
     </ul>
 
-    <!-- LLICÈNCIA CREATIVE COMMONS AL PEU DE LA COLUMNA ESQUERRA -->
+    <!-- LLICÈNCIA CREATIVE COMMONS INTEGRADa AL PEU DE LA BARRA LATERAL -->
     <div class="sidebar-footer">
       <div class="cc-card">
-        <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="cc-badge" title="Llicència Creative Commons BY-NC 4.0">
-          <img alt="Llicència Creative Commons CC BY-NC 4.0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
+        <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="cc-badge" title="Llicència Creative Commons BY-NC 4.0">
+          <img alt="Llicència Creative Commons CC BY-NC 4.0" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc.png" />
         </a>
         <div class="cc-title">Llicència de l'obra</div>
         <p class="cc-text">
-          Aquest contingut està sota la llicència <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>.
+          Aquest contingut està sota la llicència <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>.
         </p>
         <ul class="cc-rules">
           <li><i class="fa-solid fa-user-check"></i> Cal citar l'autoria</li>
@@ -397,7 +402,7 @@
     <div class="hero-banner">
       <div class="hero-content">
         <h1 id="page-title">Mòdul 0. Introducció al control de drons amb simulador</h1>
-        <p>Curs de digitalització amb Drons. <h6 style="color: var(--text-muted); font-weight: 400;"> ajime118@xtec.cat</h6></p>
+        <p>Curs de digitalització amb Drons.</p>
       </div>
     </div>
 
