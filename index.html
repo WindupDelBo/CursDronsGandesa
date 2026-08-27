@@ -268,17 +268,17 @@
         </a>
       </li>
       <li class="menu-item">
-        <a href="#tello" class="menu-link" onclick="showSection('tello', this)">
+        <a href="#anells" class="menu-link" onclick="showSection('anells', this)">
           <i class="fa-solid fa-plane-drone"></i> Mòdul 1. Node-red per a control de drons
         </a>
       </li>
       <li class="menu-item">
-        <a href="#vision" class="menu-link" onclick="showSection('vision', this)">
+        <a href="#repartiment" class="menu-link" onclick="showSection('repartiment', this)">
           <i class="fa-solid fa-plane-drone"></i> Mòdul 2. Programació automàtica en aplicacions de repartiment de productes
         </a>
       </li>
       <li class="menu-item">
-        <a href="#digitalitzacio" class="menu-link" onclick="showSection('digitalitzacio', this)">
+        <a href="#sulfatacio" class="menu-link" onclick="showSection('sulfatacio', this)">
           <i class="fa-solid fa-wine-glass-stripe"></i> Mòdul 3. Programació automàtica en aplicacions de sulfatació
         </a>
       </li>
@@ -290,7 +290,7 @@
     <!-- HERO BANNER -->
     <div class="hero-banner">
       <div class="hero-content">
-        <h1 id="page-title">0. Introducció al control de drons amb simulador</h1>
+        <h1 id="page-title">Mòdul 0. Introducció al control de drons amb simulador</h1>
         <p>Automatització, robòtica i digitalització agrícola a la Terra Alta.</p>
       </div>
     </div>
@@ -334,7 +334,7 @@
       </div>
 
       <!-- MÒDUL 1 -->
-      <div id="tello" class="section-page">
+      <div id="anells" class="section-page">
         <div class="grid-2">
           <div class="card" style="grid-column: 1 / -1;">
             <div>
@@ -431,7 +431,7 @@
       </div>
 
       <!-- MÒDUL 2 -->
-      <div id="vision" class="section-page">
+      <div id="repartiment" class="section-page">
         <div class="grid-2">
           <div class="card" style="grid-column: 1 / -1;">
             <div>
@@ -578,13 +578,13 @@
       </div>
 
       <!-- MÒDUL 3 -->
-      <div id="digitalitzacio" class="section-page">
+      <div id="sulfatacio" class="section-page">
         <div class="grid-2">
-          <div class="card">
+          <div class="card" style="grid-column: 1 / -1;">
             <div>
-              <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?q=80&w=800&auto=format&fit=crop" alt="Vinya i Agricultura de Precisió" class="card-img">
-              <h3><i class="fa-solid fa-seedling"></i> Agricultura de Precisió</h3>
-              <p>Captura d'imatges aèries de vinyes per analitzar l'estat de la vegetació, detectar estrès hídric i optimitzar el tractament dels cultius a la comarca de la Terra Alta.</p>
+              <img src="img/modul2_img.png" alt="Aplicació autònoma repartiment productes" class="card-img">
+              <h3><i class="fa-solid fa-brain"></i> Automatització de tasques de sulfatació amb Node-Red</h3>
+              <p>Aprenem a automatitzar una tasca de sulfatació amb un dron utilitzant Node-Red.</p>
             </div>
             <a href="https://drive.google.com/drive/folders/1AYEajvPAkMdDem7RYl-05DuClLTpExP1?usp=sharing" target="_blank" class="btn-drive">
               <i class="fa-brands fa-google-drive"></i> Descarregar Recursos (Drive)
@@ -592,12 +592,158 @@
           </div>
           <div class="card">
             <div>
-              <h3><i class="fa-brands fa-youtube"></i> Aplicació real en vinya</h3>
-              <p>Cas d'estudi de digitalització i fotogrametria aplicada al camp.</p>
+              <h3><i class="fa-brands fa-youtube"></i> Presentació de l'escena de sulfatació del simulador VirtuDron</h3>
+              <p>Vídeo de presentació de l'escena del simulador VirtuDron que s'utilitzarà en el Mòdul 3.</p>
               <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Agricultura de precisio" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/RFERLB_c8FY" title="Automatització de tasques de sulfatació" allowfullscreen></iframe>
               </div>
             </div>
+          </div>
+         <div class="card">
+            <div>
+              <h3><i class="fa-brands fa-youtube"></i> Funcionalitats bàsiques de control del dron amb Node-Red</h3>
+              <p>Es repassen les funcionalitats bàsiques de control del dron disponibles en la llibreria de Node-Red.</p>
+              <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/nmuppYRSo7E" title="Funcionalitats bàsiques de control del dron amb Node-Red" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div>
+              <h3><i class="fa-brands fa-youtube"></i> Explicació dels nodes auxiliars per a resoldre les activitats del mòdul 3.</h3>
+              <p>S'explica el funcionament dels nodes auxiliars per a resoldre totes les activitats del mòdul.</p>
+              <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/bJm2j4C66Ys" title="Explicació nodes auxiliars per a les activitats" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- SECCIÓ D'ACTIVITATS DEL MÒDUL 2 -->
+        <div class="activities-section" style="margin-top: 40px; padding-top: 30px; border-top: 2px dashed #e0e0e0;">
+          
+          <!-- Capçalera ben diferenciada -->
+          <div style="text-align: center; margin-bottom: 30px;">
+            <h2 style="font-size: 1.8rem; color: #2c3e50; display: inline-flex; align-items: center; gap: 10px;">
+              <i class="fa-solid fa-list-check" style="color: #3498db;"></i> Activitats Pràctiques
+            </h2>
+            <p style="color: #666; max-width: 600px; margin: 8px auto 0 auto;">
+              Vídeos explicatius pas a pas per a resoldre les 7 activitats del Mòdul 2.
+            </p>
+          </div>
+
+          <!-- Quadrícula de les 7 activitats -->
+          <div class="grid-2">
+
+            <!-- Activitat 1 -->
+            <div class="card">
+              <div>
+                <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 1</h3>
+                <p>Vídeo explicatiu per a la resolució de l'Activitat 1.</p>
+                <div class="video-wrapper">
+                  <iframe src="https://www.youtube.com/embed/59UH_9Kp6Rs" title="Activitat 1" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+
+            <!-- Activitat 2 -->
+            <div class="card">
+              <div>
+                <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 2</h3>
+                <p>Vídeo explicatiu per a la resolució de l'Activitat 2.</p>
+                <div class="video-wrapper">
+                  <iframe src="https://www.youtube.com/embed/WmC0g882O6M" title="Activitat 2" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+
+            <!-- Activitat 3 -->
+            <div class="card">
+              <div>
+                <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 3</h3>
+                <p>Vídeo explicatiu per a la resolució de l'Activitat 3.</p>
+                <div class="video-wrapper">
+                  <iframe src="https://www.youtube.com/embed/I18WSKE_O90" title="Activitat 3" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+
+            <!-- Activitat 4 -->
+            <div class="card">
+              <div>
+                <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 4</h3>
+                <p>Vídeo explicatiu per a la resolució de l'Activitat 4.</p>
+                <div class="video-wrapper">
+                  <iframe src="https://www.youtube.com/embed/fZpcEq6Utyw" title="Activitat 4" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+
+            <!-- Activitat 5 -->
+            <div class="card">
+              <div>
+                <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 5</h3>
+                <p>Vídeo explicatiu per a la resolució de l'Activitat 5.</p>
+                <div class="video-wrapper">
+                  <iframe src="https://www.youtube.com/embed/Udmv2uW59fM" title="Activitat 5" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+
+            <!-- Activitat 6 -->
+            <div class="card">
+              <div>
+                <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 6</h3>
+                <p>Vídeo explicatiu per a la resolució de l'Activitat 6.</p>
+                <div class="video-wrapper">
+                  <iframe src="https://www.youtube.com/embed/PeQ3P0F5-v4" title="Activitat 6" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+
+            <!-- Activitat 7 -->
+            <div class="card" style="grid-column: 1 / -1; max-width: 600px; margin: 0 auto; width: 100%;">
+              <div>
+                <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 7</h3>
+                <p>Vídeo explicatiu per a la resolució de l'Activitat 7.</p>
+                <div class="video-wrapper">
+                  <iframe src="https://www.youtube.com/embed/KcK7Mw5bX6Q" title="Activitat 7" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+
+            <!-- Activitat 8 -->
+            <div class="card" style="grid-column: 1 / -1; max-width: 600px; margin: 0 auto; width: 100%;">
+              <div>
+                <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 8</h3>
+                <p>Vídeo explicatiu per a la resolució de l'Activitat 8.</p>
+                <div class="video-wrapper">
+                  <iframe src="https://www.youtube.com/embed/C0qKwyCn72Q" title="Activitat 8" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+
+            <!-- Activitat 9 -->
+            <div class="card" style="grid-column: 1 / -1; max-width: 600px; margin: 0 auto; width: 100%;">
+              <div>
+                <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 9</h3>
+                <p>Vídeo explicatiu per a la resolució de l'Activitat 9.</p>
+                <div class="video-wrapper">
+                  <iframe src="https://www.youtube.com/embed/UGhoEddwcSc" title="Activitat 9" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+
+            <!-- Activitat 10 -->
+            <div class="card" style="grid-column: 1 / -1; max-width: 600px; margin: 0 auto; width: 100%;">
+              <div>
+                <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 10</h3>
+                <p>Vídeo explicatiu per a la resolució de l'Activitat 10.</p>
+                <div class="video-wrapper">
+                  <iframe src="https://www.youtube.com/embed/ErUkQXsTPFc" title="Activitat 10" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -609,9 +755,9 @@
   <script>
     const titles = {
       'intro': 'Mòdul 0. Introducció al control de drons amb simulador',
-      'tello': 'Mòdul 1. Node-red per a control de drons',
-      'vision': 'Mòdul 2. Programació automàtica en aplicacions de repartiment de productes',
-      'digitalitzacio': 'Mòdul 3. Programació automàtica en aplicacions de sulfatació'
+      'anells': 'Mòdul 1. Node-red per a control de drons',
+      'repartiment': 'Mòdul 2. Programació automàtica en aplicacions de repartiment de productes',
+      'sulfatacio': 'Mòdul 3. Programació automàtica en aplicacions de sulfatació'
     };
 
     function showSection(sectionId, element) {
