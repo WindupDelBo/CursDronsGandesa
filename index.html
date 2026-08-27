@@ -35,18 +35,20 @@
       overflow: hidden;
     }
 
-    /* PROTECCIÓ PER A TOTES LES IMATGES (Evita seleccionar, arrossegar o cursor d'edició) */
-    img {
+    /* PROTECCIÓ PER A TOTES LES IMATGES I ELIMINACIÓ DEL CURSOR D'ESCRIPTURA */
+    img, .card-img {
+      display: block;                  /* Elimina l'espaiat de text (inline) que crea el cursor */
       user-select: none;
       -webkit-user-select: none;
       -moz-user-select: none;
       -webkit-user-drag: none;
-      pointer-events: none; /* Fa que la imatge no reaccioni al ratolí com si fos text */
+      pointer-events: none;            /* Evita qualsevol focus de ratolí sobre la imatge */
+      cursor: default !important;      /* Assegura que mai no s'active el cursor de text */
     }
 
     /* MENÚ LATERAL / EXPLORADOR */
     aside {
-      width: 290px; /* Un poquet més estret per compactar millor */
+      width: 290px;
       background: rgba(30, 41, 59, 0.95);
       backdrop-filter: blur(12px);
       border-right: 1px solid var(--border);
@@ -90,13 +92,13 @@
 
     .menu-link {
       display: flex;
-      align-items: flex-start; /* Alineat a dalt per si el text ocupa dues línies */
+      align-items: flex-start; /* Alineació superior per si el text fa dues línies */
       gap: 0.65rem;
       padding: 0.65rem 0.75rem;
       color: var(--text-muted);
       text-decoration: none;
       border-radius: 0.4rem;
-      font-size: 0.82rem; /* Font més petita per al text del menú */
+      font-size: 0.82rem; /* Font més petita per al menú */
       font-weight: 500;
       line-height: 1.35;
       transition: all 0.25s ease;
@@ -116,7 +118,7 @@
     .menu-link i {
       font-size: 0.95rem;
       width: 18px;
-      margin-top: 2px; /* Alineació perfecta amb la primera línia de text */
+      margin-top: 2px; /* Alineació exacta amb la primera línia de text */
       text-align: center;
       flex-shrink: 0;
     }
@@ -142,7 +144,7 @@
       display: inline-block;
       margin-bottom: 0.5rem;
       transition: transform 0.2s ease;
-      pointer-events: auto; /* Permet fer clic a l'enllaç de la llicència */
+      pointer-events: auto; /* Permet interactuar amb l'enllaç de la llicència */
     }
 
     .cc-badge img {
@@ -224,7 +226,7 @@
     }
 
     .cc-rules i {
-      color: #f59e0b; /* Color groc/taronja d'atenció */
+      color: #f59e0b;
       font-size: 0.75rem;
       width: 12px;
       text-align: center;
@@ -239,7 +241,7 @@
       overflow-y: auto;
     }
 
-    /* BANNER SUPERIOR AMB IMATGE DE VINYES I DRONS */
+    /* BANNER SUPERIOR */
     .hero-banner {
       height: 220px;
       background: linear-gradient(to bottom, rgba(15, 23, 42, 0.3), var(--bg-dark)),
@@ -298,6 +300,13 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .card p, .card h3 {
+      user-select: text;
+      -webkit-user-select: text;
     }
 
     .card h3 {
@@ -416,7 +425,7 @@
       </li>
     </ul>
 
-    <!-- LLICÈNCIA CREATIVE COMMONS INTEGRADa AL PEU DE LA BARRA LATERAL -->
+    <!-- LLICÈNCIA CREATIVE COMMONS -->
     <div class="sidebar-footer">
       <div class="cc-card">
         <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" class="cc-badge" title="Llicència Creative Commons BY-NC-SA 4.0">
@@ -476,7 +485,7 @@
           </div>
           <div class="card">
             <div>
-              <h3><i class="fa-brands fa-youtube"></i> Introducció a la realitat virtual i realitat mixta. </h3>
+              <h3><i class="fa-brands fa-youtube"></i> Introducció a la realitat virtual i realitat mixta</h3>
               <p>Introducció al món de la realitat virtual (VR) amb les Quest3s i el simulador VirtuDron.</p>
               <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/gpv7cvtvgoc" title="Virtu Dron amb Realitat Virtual" allowfullscreen></iframe>
@@ -636,7 +645,6 @@
 
         <!-- SECCIÓ D'ACTIVITATS DEL MÒDUL 2 -->
         <div class="activities-section" style="margin-top: 40px; padding-top: 30px; border-top: 2px dashed #e0e0e0;">
-          
           <div style="text-align: center; margin-bottom: 30px;">
             <h2 style="font-size: 1.8rem; color: #f8fafc; display: inline-flex; align-items: center; gap: 10px;">
               <i class="fa-solid fa-list-check" style="color: #3498db;"></i> Activitats Pràctiques
@@ -647,8 +655,6 @@
           </div>
 
           <div class="grid-2">
-
-            <!-- Activitat 1 -->
             <div class="card">
               <div>
                 <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 1</h3>
@@ -658,8 +664,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- Activitat 2 -->
             <div class="card">
               <div>
                 <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 2</h3>
@@ -669,8 +673,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- Activitat 3 -->
             <div class="card">
               <div>
                 <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 3</h3>
@@ -680,8 +682,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- Activitat 4 -->
             <div class="card">
               <div>
                 <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 4</h3>
@@ -691,8 +691,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- Activitat 5 -->
             <div class="card">
               <div>
                 <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 5</h3>
@@ -702,8 +700,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- Activitat 6 -->
             <div class="card">
               <div>
                 <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 6</h3>
@@ -713,8 +709,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- Activitat 7 -->
             <div class="card">
               <div>
                 <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 7</h3>
@@ -724,7 +718,6 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -773,7 +766,6 @@
 
         <!-- SECCIÓ D'ACTIVITATS DEL MÒDUL 3 -->
         <div class="activities-section" style="margin-top: 40px; padding-top: 30px; border-top: 2px dashed #e0e0e0;">
-          
           <div style="text-align: center; margin-bottom: 30px;">
             <h2 style="font-size: 1.8rem; color: #f8fafc; display: inline-flex; align-items: center; gap: 10px;">
               <i class="fa-solid fa-list-check" style="color: #3498db;"></i> Activitats Pràctiques
@@ -784,8 +776,6 @@
           </div>
 
           <div class="grid-2">
-
-            <!-- Activitat 1 -->
             <div class="card">
               <div>
                 <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 1</h3>
@@ -795,8 +785,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- Activitat 2 -->
             <div class="card">
               <div>
                 <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 2</h3>
@@ -806,8 +794,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- Activitat 3 -->
             <div class="card">
               <div>
                 <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 3</h3>
@@ -817,8 +803,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- Activitat 4 -->
             <div class="card">
               <div>
                 <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 4</h3>
@@ -828,8 +812,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- Activitat 5 -->
             <div class="card">
               <div>
                 <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 5</h3>
@@ -839,8 +821,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- Activitat 6 -->
             <div class="card">
               <div>
                 <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 6</h3>
@@ -850,19 +830,15 @@
                 </div>
               </div>
             </div>
-
-            <!-- Activitat 7 -->
             <div class="card">
               <div>
                 <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 7</h3>
                 <p>Vídeo explicatiu per a la resolució de l'Activitat 7.</p>
                 <div class="video-wrapper">
-                  <iframe src="https://www.youtube.com/embed/KcK7Mw5bX6Q" title="Activitat 8" allowfullscreen></iframe>
+                  <iframe src="https://www.youtube.com/embed/KcK7Mw5bX6Q" title="Activitat 7" allowfullscreen></iframe>
                 </div>
               </div>
             </div>
-
-            <!-- Activitat 8 -->
             <div class="card">
               <div>
                 <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 8</h3>
@@ -872,8 +848,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- Activitat 9 -->
             <div class="card">
               <div>
                 <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 9</h3>
@@ -883,8 +857,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- Activitat 10 -->
             <div class="card">
               <div>
                 <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 10</h3>
@@ -894,7 +866,6 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -912,21 +883,17 @@
     };
 
     function showSection(sectionId, element) {
-      // Amaga totes les seccions
       document.querySelectorAll('.section-page').forEach(sec => {
         sec.classList.remove('active');
       });
 
-      // Desactiva el menú
       document.querySelectorAll('.menu-link').forEach(link => {
         link.classList.remove('active');
       });
 
-      // Activa la nova secció i opció de menú
       document.getElementById(sectionId).classList.add('active');
       element.classList.add('active');
 
-      // Canvia el títol del banner
       document.getElementById('page-title').innerText = titles[sectionId];
     }
   </script>
