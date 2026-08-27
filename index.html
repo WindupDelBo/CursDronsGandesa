@@ -105,6 +105,92 @@
       text-align: center;
     }
 
+    /* SECCIÓ LLICÈNCIA CREATIVE COMMONS (MOLT VISIBLE) */
+    .sidebar-footer {
+      margin-top: auto;
+      padding: 1.25rem;
+      border-top: 2px solid var(--primary);
+      background: rgba(15, 23, 42, 0.75);
+      text-align: center;
+    }
+
+    .cc-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      border-radius: 0.6rem;
+      padding: 1rem 0.75rem;
+    }
+
+    .cc-badge {
+      display: inline-block;
+      margin-bottom: 0.75rem;
+      transition: transform 0.2s ease;
+    }
+
+    .cc-badge img {
+      height: 34px;
+      width: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .cc-badge:hover {
+      transform: scale(1.05);
+    }
+
+    .cc-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-light);
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .cc-text {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.35;
+      margin-bottom: 0.75rem;
+    }
+
+    .cc-text a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .cc-text a:hover {
+      text-decoration: underline;
+    }
+
+    .cc-rules {
+      list-style: none;
+      text-align: left;
+      background: rgba(0, 0, 0, 0.25);
+      padding: 0.6rem 0.75rem;
+      border-radius: 0.4rem;
+      font-size: 0.75rem;
+    }
+
+    .cc-rules li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #e2e8f0;
+      margin-bottom: 0.35rem;
+    }
+
+    .cc-rules li:last-child {
+      margin-bottom: 0;
+    }
+
+    .cc-rules i {
+      color: #f59e0b; /* Color groc/taronja d'atenció */
+      font-size: 0.85rem;
+      width: 14px;
+    }
+
     /* ÀREA PRINCIPAL DE CONTINGUT */
     main {
       flex: 1;
@@ -259,9 +345,12 @@
   <aside>
     <div class="brand">
       <i class="fa-solid fa-drone"></i>
-      <h2> Curs digitalització amb drons </h2>
-      <h6>anjial.edu@gmail.com</h6>
+      <div>
+        <h2>Curs digitalització amb drons</h2>
+        <h6 style="color: var(--text-muted); font-weight: 400;">anjial.edu@gmail.com</h6>
+      </div>
     </div>
+
     <ul class="menu">
       <li class="menu-item">
         <a href="#intro" class="menu-link active" onclick="showSection('intro', this)">
@@ -284,6 +373,23 @@
         </a>
       </li>
     </ul>
+
+    <!-- LLICÈNCIA CREATIVE COMMONS AL PEU DE LA COLUMNA ESQUERRA -->
+    <div class="sidebar-footer">
+      <div class="cc-card">
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="cc-badge" title="Llicència Creative Commons BY-NC 4.0">
+          <img alt="Llicència Creative Commons CC BY-NC 4.0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
+        </a>
+        <div class="cc-title">Llicència de l'obra</div>
+        <p class="cc-text">
+          Aquest contingut està sota la llicència <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>.
+        </p>
+        <ul class="cc-rules">
+          <li><i class="fa-solid fa-user-check"></i> Cal citar l'autoria</li>
+          <li><i class="fa-solid fa-hand-holding-dollar"></i> Ús No Comercial</li>
+        </ul>
+      </div>
+    </div>
   </aside>
 
   <!-- SECCIÓ PRINCIPAL -->
@@ -484,17 +590,15 @@
         <!-- SECCIÓ D'ACTIVITATS DEL MÒDUL 2 -->
         <div class="activities-section" style="margin-top: 40px; padding-top: 30px; border-top: 2px dashed #e0e0e0;">
           
-          <!-- Capçalera ben diferenciada -->
           <div style="text-align: center; margin-bottom: 30px;">
-            <h2 style="font-size: 1.8rem; color: #2c3e50; display: inline-flex; align-items: center; gap: 10px;">
+            <h2 style="font-size: 1.8rem; color: #f8fafc; display: inline-flex; align-items: center; gap: 10px;">
               <i class="fa-solid fa-list-check" style="color: #3498db;"></i> Activitats Pràctiques
             </h2>
-            <p style="color: #666; max-width: 600px; margin: 8px auto 0 auto;">
+            <p style="color: #94a3b8; max-width: 600px; margin: 8px auto 0 auto;">
                Vídeos explicatius amb els enunciats de les activitats a realitzar per l'alumnat.
             </p>
           </div>
 
-          <!-- Quadrícula de les activitats -->
           <div class="grid-2">
 
             <!-- Activitat 1 -->
@@ -622,17 +726,15 @@
         <!-- SECCIÓ D'ACTIVITATS DEL MÒDUL 3 -->
         <div class="activities-section" style="margin-top: 40px; padding-top: 30px; border-top: 2px dashed #e0e0e0;">
           
-          <!-- Capçalera ben diferenciada -->
           <div style="text-align: center; margin-bottom: 30px;">
-            <h2 style="font-size: 1.8rem; color: #2c3e50; display: inline-flex; align-items: center; gap: 10px;">
+            <h2 style="font-size: 1.8rem; color: #f8fafc; display: inline-flex; align-items: center; gap: 10px;">
               <i class="fa-solid fa-list-check" style="color: #3498db;"></i> Activitats Pràctiques
             </h2>
-            <p style="color: #666; max-width: 600px; margin: 8px auto 0 auto;">
+            <p style="color: #94a3b8; max-width: 600px; margin: 8px auto 0 auto;">
               Vídeos explicatius amb els enunciats de les activitats a realitzar per l'alumnat.
             </p>
           </div>
 
-          <!-- Quadrícula de les activitats -->
           <div class="grid-2">
 
             <!-- Activitat 1 -->
