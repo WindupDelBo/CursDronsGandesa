@@ -5,19 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Digitalització amb Drons</title>
   <!-- Google Fonts & FontAwesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     :root {
-      --primary: #10b981; /* Verd vinya / tecnològic */
-      --primary-dark: #047857;
-      --accent: #3b82f6; /* Blau dron */
-      --bg-dark: #0f172a;
-      --card-bg: #1e293b;
-      --text-light: #f8fafc;
-      --text-muted: #94a3b8;
-      --border: #334155;
+      /* PALETA DE COLORS FRESCA I JUVENIL */
+      --primary: #10b981;        /* Verd maragda viu */
+      --primary-light: #d1fae5;  /* Verd molt suau */
+      --accent: #3b82f6;         /* Blau brillant */
+      --accent-light: #eff6ff;   /* Blau molt suau per a fons de botons/targetes */
+      
+      --bg-body: #f8fafc;        /* Fons general clar i net */
+      --sidebar-bg: #ffffff;     /* Menú lateral blanc */
+      --card-bg: #ffffff;        /* Targetes blanques */
+      
+      --text-main: #0f172a;      /* Text principal fosc (fàcil de llegir) */
+      --text-muted: #64748b;     /* Text secundari gris modern */
+      --border: #e2e8f0;         /* Línies de divisió molt suaus */
+      
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+      --shadow-hover: 0 20px 30px -10px rgba(59, 130, 246, 0.15);
     }
 
     * {
@@ -27,9 +36,9 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg-dark);
-      color: var(--text-light);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
       display: flex;
       height: 100vh;
       overflow: hidden;
@@ -48,9 +57,8 @@
 
     /* MENÚ LATERAL / EXPLORADOR */
     aside {
-      width: 290px;
-      background: rgba(30, 41, 59, 0.95);
-      backdrop-filter: blur(12px);
+      width: 300px;
+      background: var(--sidebar-bg);
       border-right: 1px solid var(--border);
       display: flex;
       flex-direction: column;
@@ -58,67 +66,74 @@
       height: 100vh;
       overflow-y: auto;
       z-index: 10;
+      box-shadow: var(--shadow-sm);
     }
 
     .brand {
-      padding: 1.2rem 1rem;
+      padding: 1.4rem 1.25rem;
       border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.75rem;
+      background: linear-gradient(135deg, #ffffff, #f0fdf4);
     }
 
     .brand i {
-      font-size: 1.4rem;
+      font-size: 1.6rem;
       color: var(--primary);
+      background: var(--primary-light);
+      padding: 0.5rem;
+      border-radius: 0.75rem;
     }
 
     .brand h2 {
-      font-size: 0.95rem; /* Text de capçalera més petit */
-      font-weight: 700;
+      font-size: 0.95rem;
+      font-weight: 800;
       letter-spacing: -0.01em;
       line-height: 1.2;
+      color: var(--text-main);
     }
 
     .menu {
       list-style: none;
-      padding: 1rem 0.75rem;
+      padding: 1.25rem 0.85rem;
       flex: 1 0 auto;
     }
 
     .menu-item {
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.4rem;
     }
 
     .menu-link {
       display: flex;
-      align-items: flex-start; /* Alineació superior per si el text fa dues línies */
-      gap: 0.65rem;
-      padding: 0.65rem 0.75rem;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.75rem 0.85rem;
       color: var(--text-muted);
       text-decoration: none;
-      border-radius: 0.4rem;
-      font-size: 0.82rem; /* Font més petita per al menú */
-      font-weight: 500;
-      line-height: 1.35;
-      transition: all 0.25s ease;
+      border-radius: 0.6rem;
+      font-size: 0.83rem;
+      font-weight: 600;
+      line-height: 1.4;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .menu-link:hover {
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text-light);
+      background: var(--accent-light);
+      color: var(--accent);
+      transform: translateX(3px);
     }
 
     .menu-link.active {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      background: linear-gradient(135deg, var(--primary), #059669);
       color: white;
-      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
     }
 
     .menu-link i {
-      font-size: 0.95rem;
-      width: 18px;
-      margin-top: 2px; /* Alineació exacta amb la primera línia de text */
+      font-size: 1rem;
+      width: 20px;
+      margin-top: 2px;
       text-align: center;
       flex-shrink: 0;
     }
@@ -126,25 +141,26 @@
     /* SECCIÓ LLICÈNCIA CREATIVE COMMONS */
     .sidebar-footer {
       margin-top: auto;
-      padding: 1rem 0.75rem;
-      border-top: 2px solid var(--primary);
-      background: rgba(15, 23, 42, 0.9);
+      padding: 1rem 0.85rem;
+      border-top: 1px solid var(--border);
+      background: #fafafa;
       flex-shrink: 0;
     }
 
     .cc-card {
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--sidebar-bg);
       border: 1px solid var(--border);
-      border-radius: 0.5rem;
-      padding: 0.85rem 0.65rem;
+      border-radius: 0.75rem;
+      padding: 0.85rem 0.75rem;
       text-align: center;
+      box-shadow: var(--shadow-sm);
     }
 
     .cc-badge {
       display: inline-block;
       margin-bottom: 0.5rem;
       transition: transform 0.2s ease;
-      pointer-events: auto; /* Permet interactuar amb l'enllaç de la llicència */
+      pointer-events: auto;
     }
 
     .cc-badge img {
@@ -160,8 +176,8 @@
 
     .cc-title {
       font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--text-light);
+      font-weight: 800;
+      color: var(--text-main);
       margin-bottom: 0.3rem;
       text-transform: uppercase;
       letter-spacing: 0.03em;
@@ -170,14 +186,14 @@
     .cc-text {
       font-size: 0.73rem;
       color: var(--text-muted);
-      line-height: 1.3;
+      line-height: 1.35;
       margin-bottom: 0.5rem;
     }
 
     .cc-text a {
       color: var(--primary);
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .cc-text a:hover {
@@ -193,6 +209,7 @@
       align-items: center;
       justify-content: center;
       gap: 0.35rem;
+      font-weight: 500;
     }
 
     .cc-contact a {
@@ -207,17 +224,18 @@
     .cc-rules {
       list-style: none;
       text-align: left;
-      background: rgba(0, 0, 0, 0.3);
+      background: #f1f5f9;
       padding: 0.5rem 0.65rem;
-      border-radius: 0.35rem;
+      border-radius: 0.5rem;
       font-size: 0.7rem;
+      font-weight: 600;
     }
 
     .cc-rules li {
       display: flex;
       align-items: center;
       gap: 0.4rem;
-      color: #e2e8f0;
+      color: #334155;
       margin-bottom: 0.25rem;
     }
 
@@ -226,7 +244,7 @@
     }
 
     .cc-rules i {
-      color: #f59e0b;
+      color: #d97706;
       font-size: 0.75rem;
       width: 12px;
       text-align: center;
@@ -241,32 +259,34 @@
       overflow-y: auto;
     }
 
-    /* BANNER SUPERIOR */
+    /* BANNER SUPERIOR - ESTIL AMB GRADIENT FRESC */
     .hero-banner {
-      height: 220px;
-      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.3), var(--bg-dark)),
+      height: 200px;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.85), rgba(16, 185, 129, 0.85)),
                   url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1600&auto=format&fit=crop') center/cover;
       display: flex;
       align-items: flex-end;
-      padding: 2rem 3rem;
+      padding: 2.5rem 3rem;
       position: relative;
     }
 
     .hero-content h1 {
-      font-size: 2.2rem;
-      font-weight: 700;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #ffffff;
       margin-bottom: 0.3rem;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      text-shadow: 0 2px 10px rgba(0,0,0,0.15);
     }
 
     .hero-content p {
-      color: var(--text-muted);
+      color: #e0f2fe;
       font-size: 1rem;
+      font-weight: 500;
     }
 
     /* CONTENIDOR DE SECCIONS */
     .content-container {
-      padding: 2rem 3rem 4rem;
+      padding: 2.5rem 3rem 4rem;
     }
 
     .section-page {
@@ -279,29 +299,35 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+      from { opacity: 0; transform: translateY(12px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
+      gap: 1.75rem;
       margin-top: 1.5rem;
     }
 
-    /* CARDS ESTIL DASHBOARD */
+    /* CARDS ESTIL LLEU I CLAR */
     .card {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 0.85rem;
-      padding: 1.5rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      border-radius: 1rem;
+      padding: 1.75rem;
+      box-shadow: var(--shadow-md);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       user-select: none;
       -webkit-user-select: none;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
     }
 
     .card p, .card h3 {
@@ -310,41 +336,47 @@
     }
 
     .card h3 {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
+      font-weight: 700;
       margin-bottom: 0.75rem;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      color: var(--primary);
+      gap: 0.6rem;
+      color: var(--text-main);
+    }
+
+    .card h3 i {
+      color: var(--accent);
     }
 
     .card p {
       color: var(--text-muted);
       line-height: 1.6;
       font-size: 0.95rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
     }
 
     .card-img {
       width: 100%;
-      height: 180px;
+      height: 200px;
       object-fit: cover;
-      border-radius: 0.5rem;
-      margin-bottom: 1rem;
+      border-radius: 0.75rem;
+      margin-bottom: 1.25rem;
+      border: 1px solid var(--border);
     }
 
-    /* BOTÓ DE DESCÀRREGA DE DRIVE */
+    /* BOTÓ DE DESCÀRREGA DE DRIVE MODERN */
     .btn-drive {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
-      background-color: rgba(59, 130, 246, 0.15);
-      color: #60a5fa;
-      border: 1px solid rgba(59, 130, 246, 0.3);
-      padding: 0.75rem 1.25rem;
-      border-radius: 0.5rem;
-      font-weight: 600;
+      gap: 0.6rem;
+      background-color: var(--accent-light);
+      color: var(--accent);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      padding: 0.85rem 1.5rem;
+      border-radius: 0.75rem;
+      font-weight: 700;
       font-size: 0.9rem;
       text-decoration: none;
       transition: all 0.25s ease;
@@ -354,8 +386,7 @@
     .btn-drive:hover {
       background-color: var(--accent);
       color: white;
-      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
     }
 
     /* REPRODUCTOR DE VÍDEO EMBEDDED */
@@ -366,6 +397,7 @@
       border-radius: 0.75rem;
       overflow: hidden;
       margin-top: 1rem;
+      box-shadow: var(--shadow-sm);
       border: 1px solid var(--border);
     }
 
@@ -384,6 +416,8 @@
       aside { width: 100%; height: auto; }
       main { height: auto; }
       .grid-2 { grid-template-columns: 1fr; }
+      .hero-banner { padding: 2rem 1.5rem; }
+      .content-container { padding: 1.5rem 1.5rem 3rem; }
     }
   </style>
 </head>
@@ -453,7 +487,7 @@
     <div class="hero-banner">
       <div class="hero-content">
         <h1 id="page-title">Mòdul 0. Introducció al control de drons amb simulador</h1>
-        <p>Curs de digitalització amb Drons.</p>
+        <p>Curs de digitalització amb Drons</p>
       </div>
     </div>
 
@@ -476,7 +510,7 @@
           </div>
           <div class="card">
             <div>
-              <h3><i class="fa-brands fa-youtube"></i> Introducció al simulador</h3>
+              <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Introducció al simulador</h3>
               <p>Aprèn a utilitzar el simulador VirtuDron.</p>
               <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/7w1m9pcTGJk" title="VirtuDron Intro" allowfullscreen></iframe>
@@ -485,7 +519,7 @@
           </div>
           <div class="card">
             <div>
-              <h3><i class="fa-brands fa-youtube"></i> Introducció a la realitat virtual i realitat mixta</h3>
+              <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Introducció a la realitat virtual i realitat mixta</h3>
               <p>Introducció al món de la realitat virtual (VR) amb les Quest3s i el simulador VirtuDron.</p>
               <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/gpv7cvtvgoc" title="Virtu Dron amb Realitat Virtual" allowfullscreen></iframe>
@@ -510,7 +544,7 @@
           </div>
           <div class="card">
             <div>
-              <h3><i class="fa-brands fa-youtube"></i> Introducció Node-Red</h3>
+              <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Introducció Node-Red</h3>
               <p>Introducció a Node-Red.</p>
               <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/hzmKjBvKEUg" title="Intro Node-Red" allowfullscreen></iframe>
@@ -519,7 +553,7 @@
           </div>
           <div class="card">
             <div>
-              <h3><i class="fa-brands fa-youtube"></i> Conceptes de xarxes locals</h3>
+              <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Conceptes de xarxes locals</h3>
               <p>Conceptes importants de xarxes locals: IP i port.</p>
               <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/dmu33IX8zbA" title="Concepte de xarxes locals" allowfullscreen></iframe>
@@ -528,7 +562,7 @@
           </div>
           <div class="card">
             <div>
-              <h3><i class="fa-brands fa-youtube"></i> Comandes al simulador VirtuDron amb Node-Red</h3>
+              <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Comandes al simulador VirtuDron amb Node-Red</h3>
               <p>Comandes al simulador VirtuDron amb Node-Red</p>
               <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/fgZ3s9HF1LI" title="Comandes al simulador VirtuDron amb Node-Red" allowfullscreen></iframe>
@@ -537,7 +571,7 @@
           </div>
           <div class="card">
             <div>
-              <h3><i class="fa-brands fa-youtube"></i> Comandes de Node-Red a Quest3S en xarxa local</h3>
+              <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Comandes de Node-Red a Quest3S en xarxa local</h3>
               <p>Comandes de Node-Red a Quest3S en xarxa local</p>
               <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/7Xa9r6AXLkM" title="Comandes de Node-Red a Quest3S en xarxa local" allowfullscreen></iframe>
@@ -546,7 +580,7 @@
           </div>
           <div class="card">
             <div>
-              <h3><i class="fa-brands fa-youtube"></i> Seqüències del Dron amb Node-Red</h3>
+              <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Seqüències del Dron amb Node-Red</h3>
               <p>Seqüències del Dron amb Node-Red</p>
               <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/CgYoaV3Obro" title="Seqüències del Dron amb Node-Red" allowfullscreen></iframe>
@@ -555,7 +589,7 @@
           </div>
           <div class="card">
             <div>
-              <h3><i class="fa-brands fa-youtube"></i> Obtindre dades de telemetria amb Node-Red</h3>
+              <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Obtindre dades de telemetria amb Node-Red</h3>
               <p>Obtindre dades de telemetria amb Node-Red</p>
               <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/bjTEE2kYdHE" title="Obtindre dades de telemetria amb Node-Red" allowfullscreen></iframe>
@@ -564,7 +598,7 @@
           </div>
           <div class="card">
             <div>
-              <h3><i class="fa-brands fa-youtube"></i> Separar les dades de telemetria</h3>
+              <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Separar les dades de telemetria</h3>
               <p>Separar les dades de telemetria</p>
               <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/S7lbaAULx_U" title="Separar les dades de telemetria" allowfullscreen></iframe>
@@ -573,7 +607,7 @@
           </div>
           <div class="card">
             <div>
-              <h3><i class="fa-brands fa-youtube"></i> Exemple de seqüència amb consulta de dades de telemetria</h3>
+              <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Exemple de seqüència amb consulta de dades de telemetria</h3>
               <p>Exemple de seqüència amb consulta de dades de telemetria</p>
               <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/pgE4nfJn5js" title="Exemple de seqüència amb consulta de dades de telemetria" allowfullscreen></iframe>
@@ -582,7 +616,7 @@
           </div>
           <div class="card">
             <div>
-              <h3><i class="fa-brands fa-youtube"></i> Automatització amb dades de telemetria</h3>
+              <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Automatització amb dades de telemetria</h3>
               <p>Automatització amb dades de telemetria</p>
               <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/Pxo3R8gnsXY" title="Automatització amb dades de telemetria" allowfullscreen></iframe>
@@ -607,7 +641,7 @@
           </div>
           <div class="card">
             <div>
-              <h3><i class="fa-brands fa-youtube"></i> Presentació de l'escena de repartiment del simulador VirtuDron</h3>
+              <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Presentació de l'escena de repartiment</h3>
               <p>Vídeo de presentació de l'escena del simulador VirtuDron que s'utilitzarà en el Mòdul 2.</p>
               <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/U2zlLI3J3fU" title="Automatització de tasques de repartiment" allowfullscreen></iframe>
@@ -616,7 +650,7 @@
           </div>
          <div class="card">
             <div>
-              <h3><i class="fa-brands fa-youtube"></i> Funcionalitats bàsiques de control del dron amb Node-Red</h3>
+              <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Funcionalitats bàsiques de control</h3>
               <p>Es repassen les funcionalitats bàsiques de control del dron disponibles en la llibreria de Node-Red.</p>
               <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/3URiNUJ08wc" title="Funcionalitats bàsiques de control del dron amb Node-Red" allowfullscreen></iframe>
@@ -625,7 +659,7 @@
           </div>
           <div class="card">
             <div>
-              <h3><i class="fa-brands fa-youtube"></i> Automatització simple pas a pas</h3>
+              <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Automatització simple pas a pas</h3>
               <p>Es resol un exercici pas a pas com a base per a les activitats que es proposaran.</p>
               <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/itCIU4ttlKw" title="Exemple automatització pas a pas" allowfullscreen></iframe>
@@ -634,7 +668,7 @@
           </div>
           <div class="card">
             <div>
-              <h3><i class="fa-brands fa-youtube"></i> Explicació dels nodes auxiliars per a resoldre les activitats del mòdul.</h3>
+              <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Nodes auxiliars del mòdul</h3>
               <p>S'explica el funcionament dels nodes auxiliars per a resoldre totes les activitats del mòdul.</p>
               <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/BU4FF1LmJLo" title="Explicació nodes auxiliars per a les activitats" allowfullscreen></iframe>
@@ -644,12 +678,12 @@
         </div>
 
         <!-- SECCIÓ D'ACTIVITATS DEL MÒDUL 2 -->
-        <div class="activities-section" style="margin-top: 40px; padding-top: 30px; border-top: 2px dashed #e0e0e0;">
+        <div class="activities-section" style="margin-top: 50px; padding-top: 30px; border-top: 2px dashed var(--border);">
           <div style="text-align: center; margin-bottom: 30px;">
-            <h2 style="font-size: 1.8rem; color: #f8fafc; display: inline-flex; align-items: center; gap: 10px;">
-              <i class="fa-solid fa-list-check" style="color: #3498db;"></i> Activitats Pràctiques
+            <h2 style="font-size: 1.6rem; font-weight: 800; color: var(--text-main); display: inline-flex; align-items: center; gap: 10px;">
+              <i class="fa-solid fa-list-check" style="color: var(--accent);"></i> Activitats Pràctiques
             </h2>
-            <p style="color: #94a3b8; max-width: 600px; margin: 8px auto 0 auto;">
+            <p style="color: var(--text-muted); max-width: 600px; margin: 8px auto 0 auto; font-size: 0.95rem;">
                Vídeos explicatius amb els enunciats de les activitats a realitzar per l'alumnat.
             </p>
           </div>
@@ -657,7 +691,7 @@
           <div class="grid-2">
             <div class="card">
               <div>
-                <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 1</h3>
+                <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Activitat 1</h3>
                 <p>Vídeo explicatiu per a la resolució de l'Activitat 1.</p>
                 <div class="video-wrapper">
                   <iframe src="https://www.youtube.com/embed/62d3yMu6XZc" title="Activitat 1" allowfullscreen></iframe>
@@ -666,7 +700,7 @@
             </div>
             <div class="card">
               <div>
-                <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 2</h3>
+                <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Activitat 2</h3>
                 <p>Vídeo explicatiu per a la resolució de l'Activitat 2.</p>
                 <div class="video-wrapper">
                   <iframe src="https://www.youtube.com/embed/Lu9IERPg0aI" title="Activitat 2" allowfullscreen></iframe>
@@ -675,7 +709,7 @@
             </div>
             <div class="card">
               <div>
-                <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 3</h3>
+                <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Activitat 3</h3>
                 <p>Vídeo explicatiu per a la resolució de l'Activitat 3.</p>
                 <div class="video-wrapper">
                   <iframe src="https://www.youtube.com/embed/uUiWprXmN3Q" title="Activitat 3" allowfullscreen></iframe>
@@ -684,7 +718,7 @@
             </div>
             <div class="card">
               <div>
-                <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 4</h3>
+                <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Activitat 4</h3>
                 <p>Vídeo explicatiu per a la resolució de l'Activitat 4.</p>
                 <div class="video-wrapper">
                   <iframe src="https://www.youtube.com/embed/tjt7OT-M9dc" title="Activitat 4" allowfullscreen></iframe>
@@ -693,7 +727,7 @@
             </div>
             <div class="card">
               <div>
-                <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 5</h3>
+                <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Activitat 5</h3>
                 <p>Vídeo explicatiu per a la resolució de l'Activitat 5.</p>
                 <div class="video-wrapper">
                   <iframe src="https://www.youtube.com/embed/3U6wfTdTOvs" title="Activitat 5" allowfullscreen></iframe>
@@ -702,7 +736,7 @@
             </div>
             <div class="card">
               <div>
-                <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 6</h3>
+                <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Activitat 6</h3>
                 <p>Vídeo explicatiu per a la resolució de l'Activitat 6.</p>
                 <div class="video-wrapper">
                   <iframe src="https://www.youtube.com/embed/bzaYCZEf7w0" title="Activitat 6" allowfullscreen></iframe>
@@ -711,7 +745,7 @@
             </div>
             <div class="card">
               <div>
-                <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 7</h3>
+                <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Activitat 7</h3>
                 <p>Vídeo explicatiu per a la resolució de l'Activitat 7.</p>
                 <div class="video-wrapper">
                   <iframe src="https://www.youtube.com/embed/RrcbNV2Ps5A" title="Activitat 7" allowfullscreen></iframe>
@@ -737,7 +771,7 @@
           </div>
           <div class="card">
             <div>
-              <h3><i class="fa-brands fa-youtube"></i> Presentació de l'escena de sulfatació del simulador VirtuDron</h3>
+              <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Presentació de l'escena de sulfatació</h3>
               <p>Vídeo de presentació de l'escena del simulador VirtuDron que s'utilitzarà en el Mòdul 3.</p>
               <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/RFERLB_c8FY" title="Automatització de tasques de sulfatació" allowfullscreen></iframe>
@@ -746,7 +780,7 @@
           </div>
          <div class="card">
             <div>
-              <h3><i class="fa-brands fa-youtube"></i> Funcionalitats bàsiques de control del dron amb Node-Red</h3>
+              <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Funcionalitats bàsiques de control</h3>
               <p>Es repassen les funcionalitats bàsiques de control del dron disponibles en la llibreria de Node-Red.</p>
               <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/nmuppYRSo7E" title="Funcionalitats bàsiques de control del dron amb Node-Red" allowfullscreen></iframe>
@@ -755,7 +789,7 @@
           </div>
           <div class="card">
             <div>
-              <h3><i class="fa-brands fa-youtube"></i> Explicació dels nodes auxiliars per a resoldre les activitats del mòdul 3.</h3>
+              <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Nodes auxiliars del mòdul 3</h3>
               <p>S'explica el funcionament dels nodes auxiliars per a resoldre totes les activitats del mòdul.</p>
               <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/bJm2j4C66Ys" title="Explicació nodes auxiliars per a les activitats" allowfullscreen></iframe>
@@ -765,12 +799,12 @@
         </div>
 
         <!-- SECCIÓ D'ACTIVITATS DEL MÒDUL 3 -->
-        <div class="activities-section" style="margin-top: 40px; padding-top: 30px; border-top: 2px dashed #e0e0e0;">
+        <div class="activities-section" style="margin-top: 50px; padding-top: 30px; border-top: 2px dashed var(--border);">
           <div style="text-align: center; margin-bottom: 30px;">
-            <h2 style="font-size: 1.8rem; color: #f8fafc; display: inline-flex; align-items: center; gap: 10px;">
-              <i class="fa-solid fa-list-check" style="color: #3498db;"></i> Activitats Pràctiques
+            <h2 style="font-size: 1.6rem; font-weight: 800; color: var(--text-main); display: inline-flex; align-items: center; gap: 10px;">
+              <i class="fa-solid fa-list-check" style="color: var(--accent);"></i> Activitats Pràctiques
             </h2>
-            <p style="color: #94a3b8; max-width: 600px; margin: 8px auto 0 auto;">
+            <p style="color: var(--text-muted); max-width: 600px; margin: 8px auto 0 auto; font-size: 0.95rem;">
               Vídeos explicatius amb els enunciats de les activitats a realitzar per l'alumnat.
             </p>
           </div>
@@ -778,7 +812,7 @@
           <div class="grid-2">
             <div class="card">
               <div>
-                <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 1</h3>
+                <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Activitat 1</h3>
                 <p>Vídeo explicatiu per a la resolució de l'Activitat 1.</p>
                 <div class="video-wrapper">
                   <iframe src="https://www.youtube.com/embed/59UH_9Kp6Rs" title="Activitat 1" allowfullscreen></iframe>
@@ -787,7 +821,7 @@
             </div>
             <div class="card">
               <div>
-                <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 2</h3>
+                <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Activitat 2</h3>
                 <p>Vídeo explicatiu per a la resolució de l'Activitat 2.</p>
                 <div class="video-wrapper">
                   <iframe src="https://www.youtube.com/embed/WmC0g882O6M" title="Activitat 2" allowfullscreen></iframe>
@@ -796,7 +830,7 @@
             </div>
             <div class="card">
               <div>
-                <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 3</h3>
+                <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Activitat 3</h3>
                 <p>Vídeo explicatiu per a la resolució de l'Activitat 3.</p>
                 <div class="video-wrapper">
                   <iframe src="https://www.youtube.com/embed/I18WSKE_O90" title="Activitat 3" allowfullscreen></iframe>
@@ -805,7 +839,7 @@
             </div>
             <div class="card">
               <div>
-                <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 4</h3>
+                <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Activitat 4</h3>
                 <p>Vídeo explicatiu per a la resolució de l'Activitat 4.</p>
                 <div class="video-wrapper">
                   <iframe src="https://www.youtube.com/embed/fZpcEq6Utyw" title="Activitat 4" allowfullscreen></iframe>
@@ -814,7 +848,7 @@
             </div>
             <div class="card">
               <div>
-                <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 5</h3>
+                <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Activitat 5</h3>
                 <p>Vídeo explicatiu per a la resolució de l'Activitat 5.</p>
                 <div class="video-wrapper">
                   <iframe src="https://www.youtube.com/embed/Udmv2uW59fM" title="Activitat 5" allowfullscreen></iframe>
@@ -823,7 +857,7 @@
             </div>
             <div class="card">
               <div>
-                <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 6</h3>
+                <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Activitat 6</h3>
                 <p>Vídeo explicatiu per a la resolució de l'Activitat 6.</p>
                 <div class="video-wrapper">
                   <iframe src="https://www.youtube.com/embed/PeQ3P0F5-v4" title="Activitat 6" allowfullscreen></iframe>
@@ -832,7 +866,7 @@
             </div>
             <div class="card">
               <div>
-                <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 7</h3>
+                <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Activitat 7</h3>
                 <p>Vídeo explicatiu per a la resolució de l'Activitat 7.</p>
                 <div class="video-wrapper">
                   <iframe src="https://www.youtube.com/embed/KcK7Mw5bX6Q" title="Activitat 7" allowfullscreen></iframe>
@@ -841,7 +875,7 @@
             </div>
             <div class="card">
               <div>
-                <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 8</h3>
+                <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Activitat 8</h3>
                 <p>Vídeo explicatiu per a la resolució de l'Activitat 8.</p>
                 <div class="video-wrapper">
                   <iframe src="https://www.youtube.com/embed/C0qKwyCn72Q" title="Activitat 8" allowfullscreen></iframe>
@@ -850,7 +884,7 @@
             </div>
             <div class="card">
               <div>
-                <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 9</h3>
+                <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Activitat 9</h3>
                 <p>Vídeo explicatiu per a la resolució de l'Activitat 9.</p>
                 <div class="video-wrapper">
                   <iframe src="https://www.youtube.com/embed/UGhoEddwcSc" title="Activitat 9" allowfullscreen></iframe>
@@ -859,7 +893,7 @@
             </div>
             <div class="card">
               <div>
-                <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 10</h3>
+                <h3><i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Activitat 10</h3>
                 <p>Vídeo explicatiu per a la resolució de l'Activitat 10.</p>
                 <div class="video-wrapper">
                   <iframe src="https://www.youtube.com/embed/ErUkQXsTPFc" title="Activitat 10" allowfullscreen></iframe>
