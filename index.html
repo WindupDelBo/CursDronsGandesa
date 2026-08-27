@@ -35,9 +35,18 @@
       overflow: hidden;
     }
 
+    /* PROTECCIÓ PER A TOTES LES IMATGES (Evita seleccionar, arrossegar o cursor d'edició) */
+    img {
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -webkit-user-drag: none;
+      pointer-events: none; /* Fa que la imatge no reaccioni al ratolí com si fos text */
+    }
+
     /* MENÚ LATERAL / EXPLORADOR */
     aside {
-      width: 320px;
+      width: 290px; /* Un poquet més estret per compactar millor */
       background: rgba(30, 41, 59, 0.95);
       backdrop-filter: blur(12px);
       border-right: 1px solid var(--border);
@@ -50,44 +59,46 @@
     }
 
     .brand {
-      padding: 1.5rem 1.25rem;
+      padding: 1.2rem 1rem;
       border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.6rem;
     }
 
     .brand i {
-      font-size: 1.8rem;
+      font-size: 1.4rem;
       color: var(--primary);
     }
 
     .brand h2 {
-      font-size: 1.1rem;
+      font-size: 0.95rem; /* Text de capçalera més petit */
       font-weight: 700;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
     }
 
     .menu {
       list-style: none;
-      padding: 1.25rem 1rem;
+      padding: 1rem 0.75rem;
       flex: 1 0 auto;
     }
 
     .menu-item {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.35rem;
     }
 
     .menu-link {
       display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      padding: 0.85rem 1rem;
+      align-items: flex-start; /* Alineat a dalt per si el text ocupa dues línies */
+      gap: 0.65rem;
+      padding: 0.65rem 0.75rem;
       color: var(--text-muted);
       text-decoration: none;
-      border-radius: 0.5rem;
-      font-size: 0.92rem;
+      border-radius: 0.4rem;
+      font-size: 0.82rem; /* Font més petita per al text del menú */
       font-weight: 500;
+      line-height: 1.35;
       transition: all 0.25s ease;
     }
 
@@ -103,15 +114,17 @@
     }
 
     .menu-link i {
-      font-size: 1.1rem;
-      width: 20px;
+      font-size: 0.95rem;
+      width: 18px;
+      margin-top: 2px; /* Alineació perfecta amb la primera línia de text */
       text-align: center;
+      flex-shrink: 0;
     }
 
     /* SECCIÓ LLICÈNCIA CREATIVE COMMONS */
     .sidebar-footer {
       margin-top: auto;
-      padding: 1.25rem 1rem;
+      padding: 1rem 0.75rem;
       border-top: 2px solid var(--primary);
       background: rgba(15, 23, 42, 0.9);
       flex-shrink: 0;
@@ -120,20 +133,21 @@
     .cc-card {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--border);
-      border-radius: 0.6rem;
-      padding: 1rem 0.75rem;
+      border-radius: 0.5rem;
+      padding: 0.85rem 0.65rem;
       text-align: center;
     }
 
     .cc-badge {
       display: inline-block;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.5rem;
       transition: transform 0.2s ease;
+      pointer-events: auto; /* Permet fer clic a l'enllaç de la llicència */
     }
 
     .cc-badge img {
-      height: 31px;
-      width: 88px;
+      height: 28px;
+      width: 80px;
       display: block;
       margin: 0 auto;
     }
@@ -143,19 +157,19 @@
     }
 
     .cc-title {
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       font-weight: 700;
       color: var(--text-light);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.3rem;
       text-transform: uppercase;
       letter-spacing: 0.03em;
     }
 
     .cc-text {
-      font-size: 0.78rem;
+      font-size: 0.73rem;
       color: var(--text-muted);
-      line-height: 1.35;
-      margin-bottom: 0.6rem;
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
     }
 
     .cc-text a {
@@ -169,10 +183,14 @@
     }
 
     .cc-contact {
-      font-size: 0.76rem;
+      font-size: 0.72rem;
       color: var(--text-muted);
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.5rem;
       word-break: break-all;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
     }
 
     .cc-contact a {
@@ -188,17 +206,17 @@
       list-style: none;
       text-align: left;
       background: rgba(0, 0, 0, 0.3);
-      padding: 0.6rem 0.75rem;
-      border-radius: 0.4rem;
-      font-size: 0.75rem;
+      padding: 0.5rem 0.65rem;
+      border-radius: 0.35rem;
+      font-size: 0.7rem;
     }
 
     .cc-rules li {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
       color: #e2e8f0;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.25rem;
     }
 
     .cc-rules li:last-child {
@@ -207,8 +225,9 @@
 
     .cc-rules i {
       color: #f59e0b; /* Color groc/taronja d'atenció */
-      font-size: 0.85rem;
-      width: 14px;
+      font-size: 0.75rem;
+      width: 12px;
+      text-align: center;
     }
 
     /* ÀREA PRINCIPAL DE CONTINGUT */
@@ -373,22 +392,26 @@
     <ul class="menu">
       <li class="menu-item">
         <a href="#intro" class="menu-link active" onclick="showSection('intro', this)">
-          <i class="fa-solid fa-plane-drone"></i> Mòdul 0. Introducció al control de drons amb simulador
+          <i class="fa-solid fa-plane-drone"></i>
+          <span>Mòdul 0. Introducció al control de drons amb simulador</span>
         </a>
       </li>
       <li class="menu-item">
         <a href="#anells" class="menu-link" onclick="showSection('anells', this)">
-          <i class="fa-solid fa-plane-drone"></i> Mòdul 1. Node-red per a control de drons
+          <i class="fa-solid fa-plane-drone"></i>
+          <span>Mòdul 1. Node-red per a control de drons</span>
         </a>
       </li>
       <li class="menu-item">
         <a href="#repartiment" class="menu-link" onclick="showSection('repartiment', this)">
-          <i class="fa-solid fa-plane-drone"></i> Mòdul 2. Programació automàtica en aplicacions de repartiment de productes
+          <i class="fa-solid fa-plane-drone"></i>
+          <span>Mòdul 2. Programació automàtica en aplicacions de repartiment de productes</span>
         </a>
       </li>
       <li class="menu-item">
         <a href="#sulfatacio" class="menu-link" onclick="showSection('sulfatacio', this)">
-          <i class="fa-solid fa-wine-glass-stripe"></i> Mòdul 3. Programació automàtica en aplicacions de sulfatació
+          <i class="fa-solid fa-wine-glass-stripe"></i>
+          <span>Mòdul 3. Programació automàtica en aplicacions de sulfatació</span>
         </a>
       </li>
     </ul>
@@ -404,7 +427,7 @@
           Aquest contingut està sota la llicència <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>.
         </p>
         <p class="cc-contact">
-          <i class="fa-solid fa-envelope"></i> Contacte: <a href="mailto:ajime118@xtec.cat">ajime118@xtec.cat</a>
+          <i class="fa-solid fa-envelope"></i> <a href="mailto:ajime118@xtec.cat">ajime118@xtec.cat</a>
         </p>
         <ul class="cc-rules">
           <li><i class="fa-solid fa-user-check"></i> Cal citar l'autoria</li>
@@ -834,7 +857,7 @@
                 <h3><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Activitat 7</h3>
                 <p>Vídeo explicatiu per a la resolució de l'Activitat 7.</p>
                 <div class="video-wrapper">
-                  <iframe src="https://www.youtube.com/embed/KcK7Mw5bX6Q" title="Activitat 7" allowfullscreen></iframe>
+                  <iframe src="https://www.youtube.com/embed/KcK7Mw5bX6Q" title="Activitat 8" allowfullscreen></iframe>
                 </div>
               </div>
             </div>
